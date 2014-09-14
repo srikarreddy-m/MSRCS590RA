@@ -52,23 +52,28 @@ public class MainActivity extends ActionBarActivity {
 		 Date date = new Date();
 
 		 /// Collecting GPS Data
-		 LocationManager locationManager =
+		LocationManager locationManager =
 			        (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 			 
 			String mlocProvider;
 			Criteria hdCrit = new Criteria();
-			 
+			System.out.println("HIIIIIIIII   1");
 			hdCrit.setAccuracy(Criteria.ACCURACY_COARSE);
 			 
 			mlocProvider = locationManager.getBestProvider(hdCrit, true);
+			System.out.println("HIIIIIIIII   2");
 			 
 			Location currentLocation = locationManager.getLastKnownLocation(mlocProvider);
+			System.out.println("HIIIIIIIII   3");
+			 System.out.println("loc"+currentLocation.getLongitude());
 			 
 			double currentLatitude = currentLocation.getLatitude();
 			double currentLongitude = currentLocation.getLongitude();
+			System.out.println("currentLatitude"+currentLongitude);
+			System.out.println("loc"+currentLongitude);
 		 
 		 //// Write both Data to File
-		writeFile(dateFormat.format(date)+"\t"+Double.toString(currentLatitude)+"\t"+Double.toString(currentLongitude));	
+		writeFile(dateFormat.format(date)+"\t"+Double.toString(currentLatitude)+"\t"+Double.toString(currentLongitude));
 
 	//	 new SendFile().execute(""); --srikar
 
